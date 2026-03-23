@@ -21,9 +21,22 @@ export class PokeAPI {
     }
 
 
-    // async fetchLocation(locationName: string): Promise<Location> {
-    //     // implement this
-    // }
+    async fetchLocation(locationName: string): Promise<Location> {
+        const url = `${PokeAPI.baseURL}/location-area/locationName`;
+
+        try {
+            const resp = await fetch(url);
+
+            if (!resp.ok) {
+                throw new Error(`${resp.status} ${resp.statusText}`)
+            }
+
+            const location: Location = await resp.json();
+            return location;
+        } catch (e) {
+            throw new Error(`Error fetching location: ${(e as Error).message}`);
+        }
+    }
 
 }
 
