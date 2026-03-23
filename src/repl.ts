@@ -1,32 +1,31 @@
-import { initState} from "./state.js";
+import { State } from "./state.js";
 
 export function cleanInput(input: string): string[] {
     return input.trim().toLowerCase().split(" ");
 }
 
-export function startREPL() {
-    let state = initState();
-
+export function startREPL(state: State) {
     state.readline.prompt();
-    state.readline.on('line', (input) => {
+    state.readline.on('line', async (input) => {
         if (input === "") {
             state.readline.prompt();
             return;
         }
 
         const words = cleanInput(input);
+        const commandName = words[0];
 
-        if (state.commands[words[0]]) {
+        if (state.commands[commandName]) {
             try {
-                state.commands[words[0]].callback(state);
+                await state.commands[commandName].callback(state);
             } catch (error) {
                 console.log(error);
             }
         } else {
-            console.log("\nUnknown command\n")
+            console.log(`\nUnknown command: "${commandName}". Type "help" for a list of commands.\n`)
         }
-        
-        
+
+
         state.readline.prompt();
     });
 
