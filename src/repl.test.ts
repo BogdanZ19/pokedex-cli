@@ -1,5 +1,5 @@
-import {cleanInput} from "./repl.js";
-import {describe, expect, test} from "vitest";
+import { cleanInput } from "./repl.js";
+import { describe, expect, test } from "vitest";
 
 describe.each([
     {
@@ -10,15 +10,15 @@ describe.each([
         input: "hello world",
         expected: ["hello", "world"]
     }
-])("cleanInput($input)", ({input, expected}) => {
+])("cleanInput($input)", ({ input, expected }) => {
     test(`Expected: ${expected}`, () => {
         let actual = cleanInput(input)
-        
-                expect(actual).toHaveLength(expected.length);
-        
-                for (const i in expected) {
-                    expect(actual[i]).toBe(expected[i]);
-                }
+
+        expect(actual).toHaveLength(expected.length);
+
+        for (const i in expected) {
+            expect(actual[i]).toBe(expected[i]);
+        }
     });
 });
 

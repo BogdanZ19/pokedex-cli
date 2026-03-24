@@ -1,6 +1,6 @@
 import { createInterface, type Interface } from "node:readline";
 import { getCommands } from "./commands/commands.js";
-import { PokeAPI } from "./PokeAPI.js";
+import { PokeAPI } from "./pokeApi.js";
 
 export interface CLIcommand {
     name: string;
