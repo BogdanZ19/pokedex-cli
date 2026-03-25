@@ -28,7 +28,7 @@ export function getCommands(): Record<string, CLIcommand> {
         },
         explore: {
             name: "explore",
-            description: "Displays the Pokemon found at the specified location",
+            description: "Displays the Pokemon found at the specified location (ex: explore pastoria-city-area)",
             callback: commandExplore,
         }
     };
