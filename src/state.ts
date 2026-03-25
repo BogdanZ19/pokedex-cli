@@ -5,7 +5,7 @@ import { PokeAPI } from "./pokeApi.js";
 export interface CLIcommand {
     name: string;
     description: string;
-    callback: (state: State) => Promise<void>;
+    callback: (state: State, ...args: string[]) => Promise<void>;
 }
 
 export interface State {

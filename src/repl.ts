@@ -14,10 +14,11 @@ export function startREPL(state: State) {
 
         const words = cleanInput(input);
         const commandName = words[0];
+        const arg1 = words[1];
 
         if (state.commands[commandName]) {
             try {
-                await state.commands[commandName].callback(state);
+                await state.commands[commandName].callback(state, arg1);
             } catch (error) {
                 console.log(error);
             }

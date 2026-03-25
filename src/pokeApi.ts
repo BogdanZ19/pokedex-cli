@@ -1,5 +1,5 @@
-import { ShallowLocations } from "./declarations/apiDeclarations.js";
-import { Cache, CacheEntry } from "./pokeCache.js";
+import { ShallowLocations, SpecificLocation } from "./declarations/apiDeclarations.js";
+import { Cache } from "./pokeCache.js";
 
 export class PokeAPI {
     static readonly #baseURL = "https://pokeapi.co/api/v2";
@@ -29,8 +29,8 @@ export class PokeAPI {
     }
 
 
-    async fetchLocation(locationName: string): Promise<Location> {
-        const url = `${PokeAPI.#baseURL}/location-area/locationName`;
+    async fetchLocation(locationName: string): Promise<SpecificLocation> {
+        const url = `${PokeAPI.#baseURL}/location-area/${locationName}`;
 
         try {
             const resp = await fetch(url);
@@ -39,7 +39,7 @@ export class PokeAPI {
                 throw new Error(`${resp.status} ${resp.statusText}`)
             }
 
-            const location: Location = await resp.json();
+            const location: SpecificLocation = await resp.json();
             return location;
         } catch (e) {
             throw new Error(`Error fetching location: ${(e as Error).message}`);

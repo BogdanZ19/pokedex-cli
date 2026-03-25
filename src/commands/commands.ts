@@ -2,6 +2,7 @@ import { CLIcommand } from "src/state.js";
 import { commandExit } from "./command_exit.js";
 import { commandHelp } from "./command_help.js";
 import { commpandMapForward, commandMapBack } from "./command_map.js";
+import { commandExplore } from "./command_explore.js";
 
 export function getCommands(): Record<string, CLIcommand> {
     return {
@@ -24,6 +25,11 @@ export function getCommands(): Record<string, CLIcommand> {
             name: "mapb",
             description: "Displays the previous page of locations",
             callback: commandMapBack,
+        },
+        explore: {
+            name: "explore",
+            description: "Displays the Pokemon found at the specified location",
+            callback: commandExplore,
         }
     };
 }

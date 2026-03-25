@@ -10,7 +10,7 @@ export interface Result {
   url: string
 }
 
-export interface Location {
+export interface SpecificLocation {
   encounter_method_rates: EncounterMethodRate[]
   game_index: number
   id: number
