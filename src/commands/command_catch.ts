@@ -15,9 +15,11 @@ export async function commandCatch(state: State, name: string) {
     }
 
     console.log(`\nThrowing a Pokeball at ${pokemonData.name}...`);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     if (isCaught(pokemonData)) {
         console.log(`${pokemonData.name} was caught\n`);
-        state.pokedex[pokemonData.name] = pokemonData;
+        state.pokedex[pokemonData.name.toLowerCase()] = pokemonData;
     } 
     else {
         console.log(`${pokemonData.name} escaped\n`);
