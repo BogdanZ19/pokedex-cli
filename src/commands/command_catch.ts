@@ -27,14 +27,14 @@ export async function commandCatch(state: State, name: string) {
 }
 
 function isCaught(pokemon: Pokemon): boolean {
-    const exp = pokemon.base_experience;
-    const max_exp = 608;
-    const min_exp = 36;
+    const xp = pokemon.base_experience;
+    const res = Math.floor(Math.random() * xp); // res -> [0, exp)
 
-    let chance = (exp - min_exp) / (max_exp - min_exp);
+    return res > 40;    
+    // 40 is an arbitrary number
+    // a pokemon with a base xp of 39 (low) would have a 100% chance of being 
+    // caught while one with a higher base p of 63 would have a 65% chance
+    // of being caught. picachu (112 base xp) has a 37% chance
+}                      
 
-    const seed = Math.random();
-
-    return seed > chance;
-}
 
