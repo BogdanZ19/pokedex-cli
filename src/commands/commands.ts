@@ -3,6 +3,7 @@ import { commandExit } from "./command_exit.js";
 import { commandHelp } from "./command_help.js";
 import { commpandMapForward, commandMapBack } from "./command_map.js";
 import { commandExplore } from "./command_explore.js";
+import { commandCatch } from "./command_catch.js";
 
 export function getCommands(): Record<string, CLIcommand> {
     return {
@@ -30,6 +31,11 @@ export function getCommands(): Record<string, CLIcommand> {
             name: "explore",
             description: "Displays the Pokemon found at the specified location (ex: explore pastoria-city-area)",
             callback: commandExplore,
+        },
+        catch: {
+            name: "catch",
+            description: "Try to catch a pokemon (ex: catch pikachu)",
+            callback: commandCatch,
         }
     };
 }

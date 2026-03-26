@@ -1,4 +1,4 @@
-import { ShallowLocations, SpecificLocation } from "./declarations/apiDeclarations.js";
+import { Pokemon, ShallowLocations, SpecificLocation } from "./declarations/apiDeclarations.js";
 import { Cache } from "./pokeCache.js";
 
 export class PokeAPI {
@@ -46,5 +46,20 @@ export class PokeAPI {
         }
     }
 
+    async fetchPokemon(name: string): Promise<Pokemon> {
+        
+        try {
+            const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+            
+            if (!resp.ok) {
+                throw new Error(`${resp.status} ${resp.statusText}`);
+            }
+
+            const pokemon: Pokemon = await resp.json();
+            return pokemon;
+        } catch (e) {
+            throw new Error(`Error fetching pokemon: ${(e as Error).message}`);
+        }
+    }
 }
 
