@@ -5,6 +5,7 @@ import { commpandMapForward, commandMapBack } from "./command_map.js";
 import { commandExplore } from "./command_explore.js";
 import { commandCatch } from "./command_catch.js";
 import { commandInspect } from "./command_inspect.js";
+import { commandPokedex } from "./command_pokedex.js";
 
 export function getCommands(): Record<string, CLIcommand> {
     return {
@@ -42,6 +43,11 @@ export function getCommands(): Record<string, CLIcommand> {
             name: "inspect",
             description: "Displays info about a specified pokemon, but only if it was previously caught. (ex: inspect squirtle)",
             callback: commandInspect,
+        },
+        pokedex: {
+            name: "pokedex",
+            description: "Displays the names of all the pokemon caught by the user",
+            callback: commandPokedex,
         }
     };
 }
